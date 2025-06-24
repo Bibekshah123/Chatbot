@@ -10,7 +10,7 @@ def is_valid_email(email):
         return False
 
 def is_valid_phone(phone):
-    return bool(re.match(r'^\+?\d{10,15}$', phone))
+    return re.match(r'^\+?\d{10,15}$', phone)
 
 def extract_date(text):
     dt = dateparser.parse(text)
