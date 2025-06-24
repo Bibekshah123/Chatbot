@@ -2,8 +2,8 @@ import streamlit as st
 from chatbot import create_qa_chain
 from utils import is_valid_email, is_valid_phone, extract_date
 
-st.set_page_config(page_title="AI Chatbot", page_icon="🤖")
-st.title("🤖 AI Chatbot with Document + Contact Form")
+st.set_page_config(page_title="AI Chatbot")
+st.title("AI Chatbot")
 
 uploaded_file = st.file_uploader("Upload your document (PDF)", type=["pdf"])
 
@@ -18,7 +18,7 @@ if uploaded_file:
 
     if query:
         if "call me" in query.lower() or "appointment" in query.lower():
-            st.subheader("📞 Contact Form")
+            st.subheader("Contact Form")
 
             name = st.text_input("Your Name")
             phone = st.text_input("Phone Number (with country code)")
@@ -28,9 +28,9 @@ if uploaded_file:
             date_value = extract_date(date_text)
 
             if name and is_valid_phone(phone) and is_valid_email(email) and date_value:
-                st.success("✅ Appointment Booked!")
-                st.write(f"📅 Appointment Date: {date_value}")
-                st.write(f"📞 Phone: {phone} | 📧 Email: {email}")
+                st.success("Appointment Booked!")
+                st.write(f"Appointment Date: {date_value}")
+                st.write(f"Phone: {phone} | 📧 Email: {email}")
             else:
                 st.warning("Please enter valid information.")
         else:
